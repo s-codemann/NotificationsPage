@@ -1,0 +1,44 @@
+<main class="container">
+  <header>
+    <h1 class="title">{{ title }}</h1>
+    <div class="unread-count">{{ unreadCount }}</div>
+    <button class="btn-mark-read" type="button">Mark all as read</button>
+  </header>
+  <div class="notifications-container">
+    <div
+      *ngFor="let notification of notifications"
+      class="notification"
+      [class.unread]="!notification.read"
+      [class.has-message]="notification.target.isMessage"
+    >
+      <img class="image" [src]="notification.image" alt="avatar image" />
+
+      <div class="notification-content">
+        <p class="notification-top">
+          <span class="name">{{ notification.name }}</span>
+          <span class="action">{{ notification.action }}</span>
+          <span class="text-target" *ngIf="notification.target.isText">
+            {{ notification.target.string }}
+          </span>
+          <svg
+            class="unread-mark"
+            *ngIf="!notification.read"
+            viewBox="0 0 10 10"
+          >
+            <circle cx="5" cy="5" r="4" fill="red"></circle>
+          </svg>
+        </p>
+        <span class="notification-created-at">{{ notification.time }}</span>
+        <p class="message" *ngIf="notification.target.isMessage">
+          {{ notification.target.string }}
+        </p>
+      </div>
+      <img
+        class="preview-image"
+        *ngIf="notification.target.isImage"
+        [src]="notification.target.string"
+        alt="preview image"
+      />
+    </div>
+  </div>
+</main>

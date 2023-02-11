@@ -1,0 +1,135 @@
+.container{
+    
+    height:732px;
+    width:680px;
+    background-color: white;
+    font-family: Plus Jakarta Sans;
+    padding:0 16px;
+    display: flex;
+    flex-direction: column;
+    header{
+        height:70px;
+        display: flex;
+        align-items: center;
+        
+       
+h1{
+            font-size: 20px;
+            
+    font-weight: 800;
+        }
+        .unread-count{
+            height:24px;
+            width:30px;
+            background-color:hsl(225, 89%, 26%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color:white;
+            border-radius: 5px;
+            margin-left: 16px;
+        }
+        .btn-mark-read{
+            margin-left: auto;
+        }
+    }
+    .notifications-container{
+        display: grid;
+       // grid-template-rows: repeat(8,1fr);
+        height:660px;
+        gap: 8px;
+        
+    .notification{
+        
+      min-height: 0;
+      padding:10px 15px;
+        display: flex;
+        align-items: center;
+        border-radius: 8px;
+        font-size: 16px;
+        .notification-content{
+            display: flex;
+            flex-direction: column;
+            margin-left: 15px;
+            .notification-created-at{
+                margin-top: 4px;
+                font-size: 14px;
+                font-weight:500;
+                color:hsl(219, 14%, 63%);
+            }
+        .notification-top{
+            
+            
+            white-space: nowrap;
+            margin: 0;
+            .action,.text-target{
+               margin-left: 5px;
+            }
+            .name{
+                font-weight: 800;
+            }
+            .action{
+                
+                color:hsl(219, 12%, 42%);
+            }
+            .text-target{
+                font-weight: 800;
+
+                color:hsl(219, 12%, 42%);
+                white-space: normal;
+                
+              // display:inline;
+            }
+        }
+        p{
+            width: 100%;
+        }
+    }
+        &.unread{
+            background-color:hsl(210, 60%, 98%);
+            .notification-top{
+            .unread-mark{
+                height:10px;
+                aspect-ratio: 1;
+                margin-left: 3px;
+                // margin-left: 5px;
+                // margin-right: auto;
+              
+              
+                
+                
+            }
+}
+        }
+        &.has-message{
+            grid-row: span 3;
+            padding:0 15px;
+            margin: 10px 0;
+            .image{
+                margin-bottom: auto;
+                
+            }
+            .message{
+                background-color:hsl(210, 68%, 94%);
+                padding:15px;
+                margin: 0;
+
+                margin-right: 15px;
+                margin-top: 8px;
+                margin-bottom: 12px;
+                color:hsl(219, 24%, 43%);
+               
+            }
+        }
+        .image{
+            height:45px;
+            aspect-ratio: 1;
+        }
+        .preview-image{
+            height:80%;
+            aspect-ratio: 1;
+            margin-left: auto;
+        }
+    }
+}
+}
