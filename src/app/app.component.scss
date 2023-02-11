@@ -1,16 +1,21 @@
+
 .container{
-    
-    height:732px;
-    width:680px;
+
+   
+    height: 690px;
+    width:620px;
     background-color: white;
     font-family: Plus Jakarta Sans;
-    padding:0 16px;
+    padding:0 20px;
     display: flex;
     flex-direction: column;
+   
+    border-radius: 16px;
     header{
         height:70px;
         display: flex;
         align-items: center;
+        max-width: 100%;
         
        
 h1{
@@ -28,31 +33,42 @@ h1{
             color:white;
             border-radius: 5px;
             margin-left: 16px;
+            padding-bottom: 3px;
+            padding-top: 1px;
         }
         .btn-mark-read{
+            all:unset;
             margin-left: auto;
+            color:hsl(219, 12%, 42%);
+            font-size:14px;
+            &:hover,&:focus{
+                color:hsl(219, 85%, 26%);
+                cursor:pointer;
+            }
+
+            
         }
     }
     .notifications-container{
         display: grid;
-       // grid-template-rows: repeat(8,1fr);
-        height:660px;
+        height:712px;
         gap: 8px;
         
     .notification{
         
       min-height: 0;
+      max-width: 100%;
       padding:10px 15px;
         display: flex;
         align-items: center;
         border-radius: 8px;
-        font-size: 16px;
+        font-size: 14px;
+        
         .notification-content{
             display: flex;
             flex-direction: column;
             margin-left: 15px;
             .notification-created-at{
-                margin-top: 4px;
                 font-size: 14px;
                 font-weight:500;
                 color:hsl(219, 14%, 63%);
@@ -60,8 +76,9 @@ h1{
         .notification-top{
             
             
-            white-space: nowrap;
+           // white-space: nowrap;
             margin: 0;
+           line-height: 1.2rem;
             .action,.text-target{
                margin-left: 5px;
             }
@@ -77,8 +94,18 @@ h1{
 
                 color:hsl(219, 12%, 42%);
                 white-space: normal;
+                &.target-highlight{
+                color:hsl(219, 85%, 26%);
+                }
                 
-              // display:inline;
+            }
+            .text-target,.name{
+                &:hover{
+                    cursor: pointer;
+
+                color:hsl(219, 85%, 26%);
+                }
+
             }
         }
         p{
@@ -92,11 +119,6 @@ h1{
                 height:10px;
                 aspect-ratio: 1;
                 margin-left: 3px;
-                // margin-left: 5px;
-                // margin-right: auto;
-              
-              
-                
                 
             }
 }
@@ -107,10 +129,11 @@ h1{
             margin: 10px 0;
             .image{
                 margin-bottom: auto;
+                margin-top: 5px;
                 
             }
             .message{
-                background-color:hsl(210, 68%, 94%);
+                border: 1px solid lightgray;
                 padding:15px;
                 margin: 0;
 
@@ -118,18 +141,100 @@ h1{
                 margin-top: 8px;
                 margin-bottom: 12px;
                 color:hsl(219, 24%, 43%);
+                border-radius: 4px;
+                &:hover{background-color:hsl(210, 68%, 94%);
+                    cursor: pointer;
+
+                border: 1px solid transparent;
+                }
                
             }
         }
         .image{
-            height:45px;
+            height:40px;
             aspect-ratio: 1;
         }
         .preview-image{
-            height:80%;
+            height:42px;
             aspect-ratio: 1;
             margin-left: auto;
+            border-radius: 5px;
+            padding: 2px;
+            &:hover{
+                outline:1px solid hsl(226, 27%, 82%);
+                cursor: pointer;
+            }
         }
     }
 }
+}
+@media (max-width:700px) {
+    .container{
+        width: 90%;
+       
+    }
+    
+}
+@media (max-width:500px) {
+    .container{
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        box-sizing: content-box;
+       // padding:0px 15px 30px 15px ;
+       padding:0;
+       padding-top: 15px;
+       padding-bottom: 30px;
+        align-items: center;
+        header{
+            max-width: 95%;
+            width:95%;
+            h1{
+            font-size: 18px;
+}
+.unread-count{
+    margin-left: 10px;
+}
+        }
+        .notifications-container{
+            height:calc(100% - 70px);
+            .notification{
+                justify-self: center;
+                max-width: 95%;
+                width: 95%;
+                font-size: 14px;
+                .notification-top{
+                    .name{
+                        white-space: nowrap;
+                    }
+                }
+                .image{
+                    height:35px;
+                    margin-bottom: auto;
+                    margin-top: 5px;
+                }
+                .notification-created-at{
+                    font-size: 12px;
+                }
+                .preview-image{
+                    height:40px;
+                    margin-bottom: auto;
+                    margin-left: 50px;
+                }
+            }
+
+        }
+       
+    }
+    
+}
+footer{
+    position: absolute;
+   // width: 50%;
+    bottom: 10px;
+    left: 50%;
+    translate: -50%;
+    font-style: 10px;
+    opacity: 0.5;
+    font-family: Plus Jakarta Sans;
 }

@@ -2,7 +2,9 @@
   <header>
     <h1 class="title">{{ title }}</h1>
     <div class="unread-count">{{ unreadCount }}</div>
-    <button class="btn-mark-read" type="button">Mark all as read</button>
+    <button class="btn-mark-read" (click)="markAllAsRead()" type="button">
+      Mark all as read
+    </button>
   </header>
   <div class="notifications-container">
     <div
@@ -17,7 +19,11 @@
         <p class="notification-top">
           <span class="name">{{ notification.name }}</span>
           <span class="action">{{ notification.action }}</span>
-          <span class="text-target" *ngIf="notification.target.isText">
+          <span
+            class="text-target"
+            *ngIf="notification.target.isText"
+            [class.target-highlight]="isOwnGroup(notification.target)"
+          >
             {{ notification.target.string }}
           </span>
           <svg
@@ -25,7 +31,7 @@
             *ngIf="!notification.read"
             viewBox="0 0 10 10"
           >
-            <circle cx="5" cy="5" r="4" fill="red"></circle>
+            <circle cx="5" cy="5" r="4" fill="hsl(1, 90%, 64%)"></circle>
           </svg>
         </p>
         <span class="notification-created-at">{{ notification.time }}</span>
@@ -42,3 +48,14 @@
     </div>
   </div>
 </main>
+<footer>
+  <div class="attribution">
+    Challenge by
+    <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+      >Frontend Mentor</a
+    >. Coded by
+    <a href="https://www.frontendmentor.io/profile/s-codemann"
+      >Sascha Brodmann</a
+    >.
+  </div>
+</footer>

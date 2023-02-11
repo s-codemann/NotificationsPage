@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AppNotification} from "./models/notification.model"
 import { Target } from './models/notification.model';
+import { OwnGroups } from 'src/services/own-group.service';
 
 @Component({
   selector: 'app-root',
@@ -17,11 +18,23 @@ new AppNotification(true,"1 week ago","assets/img/avatar-kimberly-smith.webp","K
 new AppNotification(true,"2 weeks ago","assets/img/avatar-nathan-peterson.webp","Nathan Peterson","reacted to your recent Post",new Target("5 end-game strategies to increase your win rate","plainText")),
 new AppNotification(true,"2 weeks ago","assets/img/avatar-anna-kim.webp","Anna Kim","has left the group",new Target("Chess Club","plainText"))
 ];
-  unreadCount:number;
+  unreadCount:number = 0;
   getUnread():number{return this.notifications.reduce((count,notification)=>{console.log(notification.read);return notification.read? count :count + 1},0)}
-  constructor(){
+  refreshUnreadCount():void{
+    this.unreadCount=this.getUnread()
+  }
+  markAllAsRead():void{
+    this.notifications.forEach(notification=> notification.read=true);
+    this.refreshUnreadCount()
+   
+  }
+  isOwnGroup(target:Target){
+    let found = this.ownGroups.groups.find((ownGroup:string )=> target.string === ownGroup);
+    return found === undefined? false : true
+  }
+  constructor(public ownGroups:OwnGroups){
 
-    this.unreadCount = this.getUnread()
+    this.refreshUnreadCount();
 
 
   }

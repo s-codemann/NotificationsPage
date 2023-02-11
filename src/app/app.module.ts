@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { OwnGroups } from 'src/services/own-group.service';
 
 
 import { AppComponent } from './app.component';
@@ -11,7 +12,7 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [OwnGroups],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
